@@ -1,0 +1,46 @@
+portfolioitems:
+  # portfolio category
+  - title: Projects
+    # items within a category
+    portfolioitem:
+      - name: 「臺北市水土保持申請書件管理平台」線上申請系統
+        image: '/images/portfolio/platform.png'
+        link: https://swc.taipei/
+        description: '1.全國首創之「水土保持計畫」線上申請系統，基於紙本申請流程重新設計、優化調整，所需審核天數已從 168 天大幅減少到 67 天。</br>2.讓不同身分的使用者 (建築師、土木工程師、建設公司及政府公務員)可以透過線上即時協作的方式，讓所有成員對該申請案件的理解達成一致性。</br>3.基於政府公益性，以[open-source專案](https://swctaipei.github.io/SWCWeb/)方式發表讓其他縣市政府運用。'
+        status: '進行中'
+        start: 'Since 2017'
+        authors:
+          - 臺北市政府工務局大地工程處
+          - 多維空間資訊有限公司
+      - name: 臺北市山坡地保育利用資訊查詢系統
+        image: '/images/portfolio/swcinfo.png'
+        link: https://swc.taipei/swcinfo/
+        description: '1.打造臺北市山坡地資訊之一站式服務系統，包含山坡地範圍、土地申請紀錄、違規紀錄、可利用限度、陽明山國家公園範圍及地質敏感區等等資訊，讓民眾不須向各別機關分別查詢。</br>2.相較於其他機關須付費才可查詢，本系統可免費下載查詢證明作為爾後申請案件使用，真正達到資訊公開的目地。'
+        status: '進行中'
+        start: 'Since 2017'
+        authors:
+          - 臺北市政府工務局大地工程處
+          - 多維空間資訊有限公司
+      - name: 城市防災開放資料公益專案
+        image: '/images/portfolio/rain.png'
+        link: https://docs.google.com/presentation/d/1y5tJMEm2tK7eoZqcqrnmqs9UxjB4K9bKP8OLLSJ5ugw/edit
+        linktext: 'View Slides'
+        description: '利用Open Data與民間資料科學家志工合作，建立AI預測模型，可以在市區淹水或山區土石流發生前提供預警，為市政府爭取 60-120 分鐘的反應時間，獲得行政院、科技部，以及美國彭博社的認可'
+        status: '完成'
+        start: '2019'
+        end: '2020'
+        authors:
+          - 臺北市政府工務局大地工程處
+          - D4SG 資料英雄計畫
+          
+  # portfolio category
+  - title: Research
+    portfolioitem:
+      - name: Data-Driven Urban Flood Warning System
+        image: '/images/portfolio/paper.jpg'
+        link: https://drive.google.com/file/d/1Y4Un0qpgKmoddHTsSB5nuI0RiPgwysys/view
+        linktext: 'View Paper'
+        description: 'A statistical model to predict the risk of urban area flooding using meteorological and hydrological information of Taipei city.</br>The paper is accepted to \"Data For Good Exchange 2019\" by Bloomberg.'
+        status: '完成'
+        start: '2019'
+        end: '2020'

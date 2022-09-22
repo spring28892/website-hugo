@@ -1,3 +1,120 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = ''
+theme = "anatole"
+#summarylength = 150
+enableEmoji = true
+enableRobotsTXT = true
+pygmentsUseClasses = true   
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+disqusShortname = "spring28892"
+hasCJKLanguage = true
+
+[params]
+title = "Steven Huang"
+author = "Steven Huang#Taiwan"
+description = """
+a.k.a spring28892
+程式設計、法律、土木工程…諸多領域均略有涉略
+以身為工具型選手為豪
+並期望自己能在通才之路上更上一層樓
+"""
+profilePicture = "images/profile.jpg"
+copyright = "Steven Huang 2022 - {{ YEAR }}"
+keywords = ""
+favicon = "favicons/"
+# example ["css/custom.css"]
+customCss = []
+# example ["js/custom.js"]
+customJs = [] 
+mainSections = ["post"]
+images = ["images/site-feature-image.png"]
+doNotLoadAnimations = true
+#contentratio = 0.75
+readMore = true
+# googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+hidesidebar = false
+fullPostContent = false
+relatedPosts = false
+numberOfRelatedPosts = 3
+
+[[params.socialIcons]]
+icon = "fab fa-linkedin"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/steven-huang/"
+
+[[params.socialIcons]]
+icon = "fab fa-github"
+title = "GitHub"
+url = "https://github.com/spring28892/"
+
+[[params.socialIcons]]
+icon = "fab fa-instagram"
+title = "instagram"
+url = "https://www.instagram.com/spring28892/"
+
+[[params.socialIcons]]
+icon = "fas fa-envelope"
+title = "e-mail"
+url = "mailto:spring28892@proton.me"
+
+[params.math]
+enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
+use = "katex"  # options: "katex", "mathjax". default is "katex".
+
+[menu]
+
+  [[menu.main]]
+  name = "首頁"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "文章"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+
+  [[menu.main]]
+  name = "專案作品"
+  weight = 300
+  identifier = "portfolio"
+  url = "/portfolio/"
+
+[[menu.main]]
+  name = "榮譽 & 成就"
+  weight = 400
+  identifier = "accomplishment"
+  url = "/accomplishment/"
+
+  [[menu.main]]
+  name = "關於我"
+  weight = 500
+  identifier = "about"
+  url = "/about/"
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+        unsafe=true
+
+[taxonomies]
+    category = "categories"
+    series = "series"
+    tag = "tags"
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+[[related.indices]]
+  name = 'keywords'
+  weight = 100
+[[related.indices]]
+  name = 'tags'
+  weight = 80
+
+[mermaid]
+enable = true
