@@ -20,7 +20,7 @@ a.k.a spring28892
 以身為工具型選手為豪
 並期望自己能在通才之路上更上一層樓
 """
-profilePicture = "images/profile.jpg"
+profilePicture = "images/profile/profile.jpg"
 copyright = "Steven Huang 2022 - {{ YEAR }}"
 keywords = ""
 favicon = "favicons/"
