@@ -1,0 +1,12 @@
+# Hugo build output
+public/
+resources/
+
+# Zone.Identifier files (Windows metadata)
+*:Zone.Identifier
+
+# Claude Code
+.claude/
+
+# Local scripts
+fb_scrape.js
