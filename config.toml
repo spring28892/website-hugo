@@ -1,67 +1,80 @@
 baseURL = 'https://stevenh.pro/'
 languageCode = 'en-us'
-title = ''
-theme = "anatole"
-#summarylength = 150
+title = "Steven's Logfile"
+theme = "PaperMod"
 enableEmoji = true
 enableRobotsTXT = true
-pygmentsUseClasses = true   
+pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 disqusShortname = "spring28892"
 hasCJKLanguage = true
 
 [params]
-title = "Steven Huang"
-author = "Steven Huang#Taiwan"
+author = "Steven Huang"
 description = """
 a.k.a spring28892
 程式設計、法律、土木工程…諸多領域均略有涉略
 以身為工具型選手為豪
 並期望自己能在通才之路上更上一層樓
 """
-profilePicture = "images/profile/profile.jpg"
 copyright = "Steven Huang 2022 - {{ YEAR }}"
 keywords = ""
-favicon = "favicons/"
-# example ["css/custom.css"]
-customCss = []
-# example ["js/custom.js"]
-customJs = [] 
 mainSections = ["post"]
 images = ['apple-touch-icon.png']
-doNotLoadAnimations = true
-#contentratio = 0.75
-readMore = true
-# googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-hidesidebar = false
-fullPostContent = false
-relatedPosts = false
-numberOfRelatedPosts = 3
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
 
-[[params.socialIcons]]
-icon = "fab fa-linkedin"
-title = "Linkedin"
-url = "https://www.linkedin.com/in/steven-huang/"
+  homeInfoAvatar = "images/profile/profile.jpg"
 
-[[params.socialIcons]]
-icon = "fab fa-github"
-title = "GitHub"
-url = "https://github.com/spring28892/"
+  [params.homeInfoParams]
+  Title = "Steven Huang"
+  Content = """
+a.k.a spring28892
+程式設計、法律、土木工程…諸多領域均略有涉略
+以身為工具型選手為豪
+並期望自己能在通才之路上更上一層樓
+"""
 
-[[params.socialIcons]]
-icon = "fab fa-instagram"
-title = "instagram"
-url = "https://www.instagram.com/spring28892/"
+  [params.profileMode]
+  enabled = false
+  title = "Steven Huang"
+  imageUrl = "images/profile/profile.jpg"
+  imageTitle = "Steven Huang"
 
-[[params.socialIcons]]
-icon = "fas fa-envelope"
-title = "e-mail"
-url = "mailto:spring28892@proton.me"
+  [[params.socialIcons]]
+  name = "linkedin"
+  title = "Linkedin"
+  url = "https://www.linkedin.com/in/steven-huang/"
 
-[params.math]
-enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
-use = "katex"  # options: "katex", "mathjax". default is "katex".
+  [[params.socialIcons]]
+  name = "github"
+  title = "GitHub"
+  url = "https://github.com/spring28892/"
+
+  [[params.socialIcons]]
+  name = "instagram"
+  title = "instagram"
+  url = "https://www.instagram.com/spring28892/"
+
+  [[params.socialIcons]]
+  name = "email"
+  title = "e-mail"
+  url = "mailto:spring28892@proton.me"
+
+  [params.assets]
+  favicon = "favicons/favicon.ico"
+  favicon16x16 = "favicons/favicon-16x16.png"
+  favicon32x32 = "favicons/favicon-32x32.png"
+  apple_touch_icon = "favicons/apple-touch-icon.png"
+
+  [params.cover]
+  linkFullImages = true
 
 [menu]
 
@@ -83,7 +96,7 @@ use = "katex"  # options: "katex", "mathjax". default is "katex".
   identifier = "portfolio"
   url = "/portfolio/"
 
-[[menu.main]]
+  [[menu.main]]
   name = "榮譽 & 成就"
   weight = 400
   identifier = "accomplishment"
@@ -95,15 +108,27 @@ use = "katex"  # options: "katex", "mathjax". default is "katex".
   identifier = "about"
   url = "/about/"
 
+  [[menu.main]]
+  name = "搜尋"
+  weight = 600
+  identifier = "search"
+  url = "/search/"
+
+  [[menu.main]]
+  name = "彙整"
+  weight = 700
+  identifier = "archives"
+  url = "/archives/"
+
 [markup]
-    [markup.goldmark]
-        [markup.goldmark.renderer]
-        unsafe=true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+    unsafe = true
 
 [taxonomies]
-    category = "categories"
-    series = "series"
-    tag = "tags"
+  category = "categories"
+  series = "series"
+  tag = "tags"
 
 [related]
   includeNewer = true
@@ -116,5 +141,5 @@ use = "katex"  # options: "katex", "mathjax". default is "katex".
   name = 'tags'
   weight = 80
 
-[mermaid]
-enable = true
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

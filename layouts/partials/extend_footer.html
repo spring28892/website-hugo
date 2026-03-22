@@ -1,0 +1,121 @@
+<!-- Search Modal -->
+<div id="search-modal-overlay">
+  <div id="search-modal">
+    <input id="search-modal-input" type="text" placeholder="搜尋文章..." autocomplete="off" />
+    <div id="search-modal-results"></div>
+    <div class="search-modal-kbd">
+      <span><kbd>↑↓</kbd> 瀏覽</span>
+      <span><kbd>Enter</kbd> 開啟</span>
+      <span><kbd>Esc</kbd> 關閉</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+(function () {
+  const overlay = document.getElementById('search-modal-overlay');
+  const input = document.getElementById('search-modal-input');
+  const resultsEl = document.getElementById('search-modal-results');
+  let fuse = null;
+  let data = null;
+  let activeIdx = -1;
+
+  // Load index
+  async function loadIndex() {
+    if (data) return;
+    const resp = await fetch('/index.json');
+    data = await resp.json();
+    fuse = new Fuse(data, {
+      keys: ['title', 'content', 'summary'],
+      includeMatches: true,
+      threshold: 0.3,
+      ignoreLocation: true,
+      minMatchCharLength: 2,
+    });
+  }
+
+  function open() {
+    loadIndex();
+    overlay.classList.add('active');
+    input.value = '';
+    resultsEl.innerHTML = '';
+    activeIdx = -1;
+    setTimeout(() => input.focus(), 50);
+  }
+
+  function close() {
+    overlay.classList.remove('active');
+  }
+
+  function render(results) {
+    if (!results.length) {
+      resultsEl.innerHTML = input.value
+        ? '<div id="search-modal-empty">找不到相關文章</div>'
+        : '';
+      activeIdx = -1;
+      return;
+    }
+    const items = results.slice(0, 15);
+    resultsEl.innerHTML = items
+      .map(
+        (r, i) =>
+          `<a href="${r.item.permalink}" class="${i === 0 ? 'active' : ''}">
+            <div class="title">${r.item.title}</div>
+            <div class="summary">${r.item.summary || ''}</div>
+          </a>`
+      )
+      .join('');
+    activeIdx = 0;
+  }
+
+  function setActive(idx) {
+    const links = resultsEl.querySelectorAll('a');
+    if (!links.length) return;
+    activeIdx = (idx + links.length) % links.length;
+    links.forEach((a, i) => a.classList.toggle('active', i === activeIdx));
+    links[activeIdx].scrollIntoView({ block: 'nearest' });
+  }
+
+  input.addEventListener('input', () => {
+    if (!fuse) return;
+    const q = input.value.trim();
+    if (!q) { resultsEl.innerHTML = ''; activeIdx = -1; return; }
+    render(fuse.search(q));
+  });
+
+  input.addEventListener('keydown', (e) => {
+    const links = resultsEl.querySelectorAll('a');
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeIdx + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeIdx - 1); }
+    else if (e.key === 'Enter' && links[activeIdx]) {
+      e.preventDefault();
+      links[activeIdx].click();
+    }
+    else if (e.key === 'Escape') { close(); }
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+
+  // Ctrl+K / Cmd+K to open
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      overlay.classList.contains('active') ? close() : open();
+    }
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      close();
+    }
+  });
+
+  // Hijack the search menu link to open modal instead
+  document.querySelectorAll('a[href$="/search/"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      open();
+    });
+  });
+})();
+</script>
