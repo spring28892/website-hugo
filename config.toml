@@ -33,7 +33,7 @@ ShowToc = true
   homeInfoAvatar = "images/profile/profile.jpg"
 
   [params.homeInfoParams]
-  Title = "Steven Huang"
+  Title = "黃凱暉 / Steven"
   Content = """
 a.k.a spring28892
 程式設計、法律、土木工程…諸多領域均略有涉略

@@ -1,0 +1,58 @@
+{{- define "main" }}
+<div class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- with .Description }}<p class="post-description">{{ . }}</p>{{- end }}
+  </header>
+
+  {{- range .Site.Data.portfolio.portfolioitems }}
+  <section style="margin-bottom: 3rem;">
+    <h2 style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">{{ .title }}</h2>
+
+    {{- range $i, $p := .portfolioitem }}
+    <div style="display: flex; gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; flex-direction: {{ if modBool $i 2 }}row{{ else }}row-reverse{{ end }};">
+      {{- if $p.image }}
+      <div style="flex: 0 0 220px;">
+        {{- if $p.link }}
+        <a href="{{ $p.link | safeURL }}" target="_blank" rel="noopener">
+          <img src="{{ $p.image | relURL }}" alt="{{ $p.name }}" style="width: 100%; border-radius: 8px; object-fit: cover;" />
+        </a>
+        {{- else }}
+        <img src="{{ $p.image | relURL }}" alt="{{ $p.name }}" style="width: 100%; border-radius: 8px; object-fit: cover;" />
+        {{- end }}
+      </div>
+      {{- end }}
+
+      <div style="flex: 1; min-width: 240px;">
+        <h3 style="margin-top: 0;">{{ $p.name | markdownify }}</h3>
+
+        <ul style="list-style: none; padding: 0; margin: 0 0 0.75rem; font-size: 0.9rem; color: var(--secondary);">
+          {{- if $p.status }}<li>狀態：{{ $p.status }}</li>{{- end }}
+          {{- if $p.start }}<li>開始：{{ $p.start }}</li>{{- end }}
+          {{- if $p.end }}<li>結束：{{ $p.end }}</li>{{- end }}
+          {{- range $p.authors }}<li>{{ . }}</li>{{- end }}
+        </ul>
+
+        <div style="margin: 0 0 1rem; font-size: 0.95rem; line-height: 1.8; white-space: pre-line;">{{ $p.description }}</div>
+
+        {{- if $p.link }}
+        <a href="{{ $p.link | safeURL }}" target="_blank" rel="noopener"
+           style="display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; text-decoration: none; color: var(--primary);">
+          {{- if $p.linktext }}{{ $p.linktext | markdownify }}{{- else }}Visit Site{{- end }}
+        </a>
+        {{- end }}
+
+        {{- if $p.tags }}
+        <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          {{- range $p.tags }}
+          <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: var(--border); border-radius: 4px;">{{ . }}</span>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
+  </section>
+  {{- end }}
+</div>
+{{- end }}
